@@ -1,6 +1,12 @@
+// ignore_for_file: camel_case_types
+
 import 'package:adopt_me/service/Colors.dart';
+import 'package:adopt_me/widgets/categoryContainer.dart';
 import 'package:flutter/material.dart';
 
+
+enum ActiveCategory { active, disactive }
+  ActiveCategory? activeCategory;
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -53,88 +59,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: const Color(0xFFFF87AB),
-                        border: Border.all(
-                            width: 1,
-                            color: const Color.fromARGB(255, 168, 168, 168)),
-                        borderRadius: BorderRadius.circular(30.0)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset("assets/images/category.png"),
-                          const SizedBox(width: 5),
-                          const Text(
-                            "All",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        // color: const Color(0xFFFF87AB),
-                        border: Border.all(
-                            width: 1,
-                            color: const Color.fromARGB(255, 168, 168, 168)),
-                        borderRadius: BorderRadius.circular(30.0)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset("assets/images/category.png"),
-                          const SizedBox(width: 5),
-                          const Text("Dogs")
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        // color: const Color(0xFFFF87AB),
-                        border: Border.all(
-                            width: 1,
-                            color: const Color.fromARGB(255, 168, 168, 168)),
-                        borderRadius: BorderRadius.circular(30.0)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset("assets/images/category.png"),
-                          const SizedBox(width: 5),
-                          const Text("Cats")
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        // color: const Color(0xFFFF87AB),
-                        border: Border.all(
-                            width: 1,
-                            color: const Color.fromARGB(255, 168, 168, 168)),
-                        borderRadius: BorderRadius.circular(30.0)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset("assets/images/category.png"),
-                          const SizedBox(width: 5),
-                          const Text("Rabbits")
-                        ],
-                      ),
-                    ),
-                  ),
+                  CategoryContainer(name: "All"),
+                  CategoryContainer(name: "Dogs"),
+                  CategoryContainer(name: "Cats"),
+                  CategoryContainer(name: "Rabbits"),
                 ],
               ),
               Padding(
@@ -145,7 +76,7 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          decoration:  BoxDecoration(
+                          decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: [
@@ -181,7 +112,12 @@ class HomePage extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Row(
-                                children: [Text("Mixed Breed | Adult", style: TextStyle(fontSize: 15),)],
+                                children: [
+                                  Text(
+                                    "Mixed Breed | Adult",
+                                    style: TextStyle(fontSize: 15),
+                                  )
+                                ],
                               ),
                             ),
                             const Padding(
@@ -189,13 +125,15 @@ class HomePage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Icon(Icons.place),
-                                  Text("2.7 km away",style: TextStyle(fontSize: 15))],
+                                  Text("2.7 km away",
+                                      style: TextStyle(fontSize: 15))
+                                ],
                               ),
                             )
                           ]),
                         ),
-                         Container(
-                          decoration:  BoxDecoration(
+                        Container(
+                          decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: [
@@ -231,7 +169,12 @@ class HomePage extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Row(
-                                children: [Text("Mixed Breed | Adult", style: TextStyle(fontSize: 15),)],
+                                children: [
+                                  Text(
+                                    "Mixed Breed | Adult",
+                                    style: TextStyle(fontSize: 15),
+                                  )
+                                ],
                               ),
                             ),
                             const Padding(
@@ -239,7 +182,9 @@ class HomePage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Icon(Icons.place),
-                                  Text("2.7 km away",style: TextStyle(fontSize: 15))],
+                                  Text("2.7 km away",
+                                      style: TextStyle(fontSize: 15))
+                                ],
                               ),
                             )
                           ]),
@@ -250,7 +195,7 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          decoration:  BoxDecoration(
+                          decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: [
@@ -286,7 +231,12 @@ class HomePage extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Row(
-                                children: [Text("Mixed Breed | Adult", style: TextStyle(fontSize: 15),)],
+                                children: [
+                                  Text(
+                                    "Mixed Breed | Adult",
+                                    style: TextStyle(fontSize: 15),
+                                  )
+                                ],
                               ),
                             ),
                             const Padding(
@@ -294,13 +244,15 @@ class HomePage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Icon(Icons.place),
-                                  Text("2.7 km away",style: TextStyle(fontSize: 15))],
+                                  Text("2.7 km away",
+                                      style: TextStyle(fontSize: 15))
+                                ],
                               ),
                             )
                           ]),
                         ),
-                         Container(
-                          decoration:  BoxDecoration(
+                        Container(
+                          decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: [
@@ -336,7 +288,12 @@ class HomePage extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Row(
-                                children: [Text("Mixed Breed | Adult", style: TextStyle(fontSize: 15),)],
+                                children: [
+                                  Text(
+                                    "Mixed Breed | Adult",
+                                    style: TextStyle(fontSize: 15),
+                                  )
+                                ],
                               ),
                             ),
                             const Padding(
@@ -344,7 +301,9 @@ class HomePage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Icon(Icons.place),
-                                  Text("2.7 km away",style: TextStyle(fontSize: 15))],
+                                  Text("2.7 km away",
+                                      style: TextStyle(fontSize: 15))
+                                ],
                               ),
                             )
                           ]),
