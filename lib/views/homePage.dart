@@ -1,14 +1,17 @@
-// ignore_for_file: camel_case_types
-
-import 'package:adopt_me/service/Colors.dart';
-import 'package:adopt_me/widgets/categoryContainer.dart';
 import 'package:flutter/material.dart';
-
+import 'package:adopt_me/widgets/categoryContainer.dart';
 
 enum ActiveCategory { active, disactive }
-  ActiveCategory? activeCategory;
-class HomePage extends StatelessWidget {
+
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  ActiveCategory? activeCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +62,38 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CategoryContainer(name: "All"),
-                  CategoryContainer(name: "Dogs"),
-                  CategoryContainer(name: "Cats"),
-                  CategoryContainer(name: "Rabbits"),
+                  CategoryContainer(
+                    onPressed: () {
+                      setState(() {
+                        activeCategory = ActiveCategory.active;
+                      });
+                    },
+                    name: "All",
+                  ),
+                  CategoryContainer(
+                      onPressed: () {
+                        setState(() {
+                          activeCategory = ActiveCategory.active;
+                        });
+                      },
+                      name: "Dogs"),
+                  CategoryContainer(
+                      onPressed: () {
+                        setState(() {
+                          activeCategory = ActiveCategory.active;
+                        });
+                      },
+                      name: "Cats"),
+                  CategoryContainer(
+                      onPressed: () {
+                        setState(() {
+                          activeCategory = ActiveCategory.active;
+                        });
+                      },
+                       name: "Rabbits"),
                 ],
               ),
               Padding(
@@ -79,7 +107,7 @@ class HomePage extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black,
                                 blurRadius: 5.0,
@@ -136,7 +164,7 @@ class HomePage extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black,
                                 blurRadius: 5.0,
